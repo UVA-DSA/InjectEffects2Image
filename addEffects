@@ -1,9 +1,0 @@
-clc; clear; close all;
-
-imdir = 'sample_images/';
-
-for i=1:1%10
-    imfile = [imdir 'f' num2str(i,'%05.f') '.png'];
-    Im = imread(imfile);
-    figure;imshow(Im)
-end
