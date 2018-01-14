@@ -1,6 +1,6 @@
 clc; clear; close all;
 
-effect = 'snow';  % rain/fog/snow/occlusion
+effect = 'occlusion';  % rain/fog/snow/occlusion
 imdir = 'sample_images/';
 
 for i=10:10%20
@@ -22,8 +22,13 @@ for i=10:10%20
         thickness = 10;   % 0~10
         Im_effect = addSnowEffect(Im, thickness);
     elseif strcmp(effect,'occlusion')
-        % TO DO
+        spots = 10; % number of blobs created by mud/snow
+        Im_effect = addOccEffect(Im, spots);
+    else
+        Im_effect = imadjust(Im,[0,1],[0,0.5]);
     end
+    
+    
     figure;imshow(Im_effect)
     imwrite(Im_effect, ['Added_' effect '.png']);
 end
